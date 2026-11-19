@@ -22,8 +22,8 @@ SKIP_DIRS = {".git", ".venv", "venv", "__pycache__", "node_modules", "dist", "bu
 SKIP_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".ttf", ".ttc", ".otf", ".woff", ".woff2", ".zip", ".adx", ".so", ".pyc", ".pdf", ".db", ".sqlite"}
 
 PATTERNS: list[tuple[str, re.Pattern[str]]] = [
-    ("private-path", re.compile(r"/home/enamht|/home/enamcloud")),
-    ("private-domain", re.compile(r"enamcloud|\.internal\b|ts\.net\b", re.IGNORECASE)),
+    ("private-path", re.compile(r"/(?:home|Users)/[A-Za-z0-9._-]+/")),
+    ("private-domain", re.compile(r"\.internal\b|ts\.net\b", re.IGNORECASE)),
     ("absolute-app-path", re.compile(r"[\"']/app/")),
     ("token", re.compile(r"\b(?:sk-[A-Za-z0-9_-]{16,}|ghp_[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9-]{10,})")),
     ("private-key", re.compile(r"BEGIN (?:RSA |OPENSSH |EC |PGP )?PRIVATE KEY")),

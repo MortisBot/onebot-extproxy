@@ -26,3 +26,19 @@ state.json
 .idea/
 .vscode/
 .DS_Store
+
+# 部署配置 / 登录态 / 凭据（绝不入库）
+nonebot.env
+*.env
+!.env.example
+docker-compose.yml
+compose.yml
+napcat/
+qq-login/
+certs/
+secrets/
+data/
+assets/
+*.db
+*.sqlite
+*.log
