@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# 环境与密钥
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# 运行时状态（不公开）
+consumers.json
+state.json
+*.log
+
+# 编辑器/系统
+.idea/
+.vscode/
+.DS_Store
