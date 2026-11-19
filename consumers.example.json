@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "listen": {
+    "host": "0.0.0.0",
+    "port": 8090
+  },
+  "state_path": "/state/state.json",
+  "buffer_size": 50,
+  "queue_max": 1000,
+  "reconnect_min": 1.0,
+  "reconnect_max": 30.0,
+  "stats_interval": 60,
+  "ping_interval": null,
+  "proxy": null,
+  "consumers": [
+    {
+      "name": "consumer-a",
+      "feature": "ws_consumer_a",
+      "path": "/consumer-a",
+      "url": "ws://example.invalid:13999/onebot/v11/ws",
+      "token": "<REMOTE_TOKEN_A>"
+    },
+    {
+      "name": "consumer-b",
+      "feature": "ws_consumer_b",
+      "path": "/consumer-b",
+      "url": "wss://example.invalid:13888/onebot/v11/ws",
+      "token": "<REMOTE_TOKEN_B>"
+    },
+    {
+      "name": "consumer-c",
+      "feature": "ws_consumer_c",
+      "path": "/consumer-c",
+      "url": "ws://example.invalid:5000/onebot/v11/ws",
+      "token": ""
+    }
+  ]
+}

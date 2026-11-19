@@ -1,0 +1,31 @@
+# 用法：
+#   cp consumers.example.json consumers.json   # 填入真实远端 URL/token，chmod 600
+#   docker compose -f compose.example.yml up -d --build
+#
+# 说明：
+#   - 中继不校验 NapCat 侧 token，只应部署在内网/容器网络中；
+#   - 仅当需要从宿主调试时才映射端口，且只绑定 127.0.0.1；
+#   - state.json 来自 feature_switch 的数据目录（只读挂载），中继只读不写。
+services:
+  onebot-extproxy:
+    build: .
+    image: onebot-extproxy:latest
+    container_name: onebot-extproxy
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+      # EXTPROXY_LOG_LEVEL: INFO
+      # EXTPROXY_STATS_INTERVAL: "60"
+    volumes:
+      - ./consumers.json:/config/consumers.json:ro
+      - ./state:/state:ro
+    # 默认不对外发布端口；需要宿主调试时取消注释（只绑环回）。
+    # ports:
+    #   - "127.0.0.1:8090:8090"
+    networks:
+      - bot-net
+
+networks:
+  bot-net:
+    external: true
+    name: bot-net
